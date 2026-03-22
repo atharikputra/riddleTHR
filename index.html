@@ -136,9 +136,10 @@ function updateHintTimers(){
     if(remaining<=0){
       if(btn.classList.contains('locked')){
         btn.classList.remove('locked');
-        btn.textContent='[ HINT '+n+': klik buat reveal ]';
-        btn.onclick=(function(num){return function(){revealHint(num);};})(n);
-        btn.style.cursor='pointer';
+        hintRevealed[n-1]=true;
+        btn.textContent=HINTS[n-1];
+        btn.classList.add('revealed');
+        btn.disabled=true;
       }
     } else {
       document.getElementById('t'+n).textContent=fmtTime(remaining);
